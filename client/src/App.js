@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.css";
 import MyNav from "./components/Navbar";
+import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
@@ -13,7 +14,10 @@ class App extends Component {
         <div>
           <MyNav />
           <Switch>
-            <Route exact path={["/", "/saved"]}>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/saved">
               <Search />
             </Route>
             <Route exact path="/search">
