@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function MyNav() {
     return (
         <Navbar collapseOnSelect expand="md" bg="primary" variant="light">
-            <Navbar.Brand as={Link} to="/" >My Reading List</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/" style={{ fontFamily: "Teko, sans-serif" }}>GoogleBooks Reading List</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
