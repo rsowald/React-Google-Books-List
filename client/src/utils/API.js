@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
-const APIKEY = process.env.APIKEY;
+const REACT_APP_APIKEY = process.env.REACT_APP_APIKEY;
 
 // Export an object with a "search" method that searches the GoogleBooks API for the passed query
 export default {
     // Gets search results from GoogleBooks
     search: function (query) {
-        return axios.get(`${BASEURL}${query}&key=${APIKEY}`);
+        return axios.get(`${BASEURL}${query}&key=${REACT_APP_APIKEY}`);
     },
     // Gets all books
     getBooks: function () {
