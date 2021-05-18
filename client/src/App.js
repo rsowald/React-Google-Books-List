@@ -17,10 +17,10 @@ class App extends Component {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/saved">
+            <Route exact path="/search">
               <Search />
             </Route>
-            <Route exact path="/search">
+            <Route exact path="/saved">
               <Saved />
             </Route>
             <Route>
