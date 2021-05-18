@@ -7,7 +7,7 @@ function SearchResults(props) {
             <Card.Header>
                 <h3>{props.title}</h3>
                 <p>by {props.authors}</p>
-                <Button variant="primary" onClick={props.handleView}>View</Button>
+                <Button variant="primary" href={props.selfLink}>View</Button>
                 <Button variant="primary" onClick={props.handleSave}>Save</Button>
             </Card.Header>
             <Card.Body>
