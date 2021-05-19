@@ -23,7 +23,7 @@ function Search() {
         console.log(query);
         API.search(query)
             .then(res => {
-                setResults(res.data.items);
+                setResults(res.data.items || []);
                 setShowResults(true);
             })
             .catch(err => console.log(err));
@@ -55,7 +55,7 @@ function Search() {
                 </Col>
             </Row>
 
-            {showResults ? (
+            {showResults && (
                 <Row style={{ border: "3px solid black", borderRadius: "5px", marginTop: "20px" }}>
                     <Col size="md-8">
                         {results.length ?
@@ -77,10 +77,8 @@ function Search() {
                         }
                     </Col>
                 </Row>
-            ) : (<></>)}
-
-
-        </Container >
+            )}
+        </Container>
     )
 }
 
