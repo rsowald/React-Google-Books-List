@@ -29,10 +29,6 @@ function Search() {
             .catch(err => console.log(err));
     }
 
-    function handleSave() {
-
-    }
-
     return (
         <Container>
             <Row style={{ border: "3px solid black", borderRadius: "5px", marginTop: "20px" }}>
@@ -62,16 +58,17 @@ function Search() {
                             results.map(book => {
                                 const imageLinks = book.volumeInfo.imageLinks;
 
-                                return <SearchResults
-                                    style={{ padding: "10px" }}
-                                    key={book.id}
-                                    title={book.volumeInfo.title}
-                                    authors={book.volumeInfo.authors}
-                                    selfLink={book.selfLink}
-                                    thumbnail={(imageLinks && imageLinks.thumbnail) || defaultThumbnail}
-                                    description={book.volumeInfo.description}
-                                    handleSave={handleSave}
-                                />;
+                                return <div key={book.id}>
+                                    {book.volumeInfo.title.length && book.volumeInfo.description ? <SearchResults
+
+                                        style={{ padding: "10px" }}
+                                        title={book.volumeInfo.title || "No Title"}
+                                        authors={book.volumeInfo.authors}
+                                        selfLink={book.selfLink}
+                                        thumbnail={(imageLinks && imageLinks.thumbnail) || defaultThumbnail}
+                                        description={book.volumeInfo.description}
+                                    /> : null}
+                                </div>
                             }) :
                             <h3>No matching results found. Please try different search criteria.</h3>
                         }
