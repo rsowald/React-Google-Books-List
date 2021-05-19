@@ -5,6 +5,8 @@ import API from '../utils/API';
 
 function Search() {
 
+    const defaultThumbnail = "https://via.placeholder.com/150";
+
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
@@ -21,12 +23,10 @@ function Search() {
         console.log(query);
         API.search(query)
             .then(res => {
-                console.log(res.data);
                 setResults(res.data.items);
-                console.log(results.length);
+                setShowResults(true);
             })
             .catch(err => console.log(err));
-        setShowResults(true)
     }
 
     function handleSave() {
@@ -59,19 +59,22 @@ function Search() {
                 <Row style={{ border: "3px solid black", borderRadius: "5px", marginTop: "20px" }}>
                     <Col size="md-8">
                         {results.length ?
-                            (results.map(book => (
-                                <SearchResults
+                            results.map(book => {
+                                const imageLinks = book.volumeInfo.imageLinks;
+
+                                return <SearchResults
                                     style={{ padding: "10px" }}
-                                    title={book.items.volumeInfo.title}
-                                    authors={book.items.volumeInfo.authors}
-                                    selfLink={book.items.selfLink}
-                                    thumbnail={book.items.volumeInfo.imageLinks.thumbnail}
-                                    description={book.items.volumeInfo.description}
+                                    key={book.id}
+                                    title={book.volumeInfo.title}
+                                    authors={book.volumeInfo.authors}
+                                    selfLink={book.selfLink}
+                                    thumbnail={(imageLinks && imageLinks.thumbnail) || defaultThumbnail}
+                                    description={book.volumeInfo.description}
                                     handleSave={handleSave}
-                                ></SearchResults>))
-                            ) : (
-                                <h3>No matching results found. Please try different search criteria.</h3>
-                            )}
+                                />;
+                            }) :
+                            <h3>No matching results found. Please try different search criteria.</h3>
+                        }
                     </Col>
                 </Row>
             ) : (<></>)}
