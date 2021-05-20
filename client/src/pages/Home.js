@@ -3,10 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 function Home() {
     return (
-        <Container style={{
-            padding: "200px 100px 300px 100px",
+        <Container className="d-flex align-items-center justify-content-center" style={{
+            width: '100vw',
+            height: '100vh',
             backgroundImage: `url(./background.jpg)`,
-            height: "auto",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover"
