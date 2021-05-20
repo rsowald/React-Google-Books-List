@@ -36,7 +36,7 @@ function Search() {
                     <Form style={{ padding: "10px" }}>
                         <Form.Group controlId="searchForm.Input">
                             <Form.Label>Search Terms</Form.Label>
-                            <Form.Control type="text" onChange={handleInputChange} placeholder="Keyword? Title? Author? Whatever." />
+                            <Form.Control type="text" onChange={handleInputChange} placeholder="Keyword, Title, or Author" />
                         </Form.Group>
                         {/* <Form.Group controlId="searchForm.Select">
                             <Form.Label>Search By</Form.Label>
@@ -62,9 +62,9 @@ function Search() {
                                     {book.volumeInfo.title.length && book.volumeInfo.description ? <SearchResults
 
                                         style={{ padding: "10px" }}
-                                        title={book.volumeInfo.title || "No Title"}
-                                        authors={book.volumeInfo.authors}
-                                        selfLink={book.selfLink}
+                                        title={book.volumeInfo.title || "No Title Listed"}
+                                        authors={book.volumeInfo.authors || ["No Authors Listed"]}
+                                        link={book.volumeInfo.canonicalVolumeLink}
                                         thumbnail={(imageLinks && imageLinks.thumbnail) || defaultThumbnail}
                                         description={book.volumeInfo.description}
                                     /> : null}

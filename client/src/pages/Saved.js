@@ -14,7 +14,6 @@ function Saved() {
     function loadBooks() {
         API.getBooks()
             .then(res => {
-                console.log(res.data)
                 setBooks(res.data)
             })
             .catch(err => console.error(err));
@@ -33,12 +32,13 @@ function Saved() {
                     {books.length ?
                         (books.map(book => (
                             <SavedResults
+                                key={book._id}
                                 title={book.title}
                                 authors={book.authors}
-                                selfLink={book.selfLink}
-                                thumbnail={book.imageLinks.thumbnail}
+                                link={book.link}
+                                thumbnail={book.image}
                                 description={book.description}
-                                handleDelete={deleteBook(book._id)}
+                                handleDelete={() => deleteBook(book._id)}
                             >
                             </SavedResults>))
                         ) : (
