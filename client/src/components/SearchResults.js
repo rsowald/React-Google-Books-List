@@ -18,20 +18,20 @@ function SearchResults(props) {
     return (
         <Card>
             <Card.Header>
-                <h3>{props.title}</h3>
-                <p>by {props.authors}</p>
-                <Button variant="primary" href={props.selfLink}>View</Button>
-                <Button variant="primary" onClick={() => !saved && handleSave(
+                <h3 className="d-inline-flex mr-3">{props.title}</h3>
+                <p className="d-inline-flex mt-2">by {props.authors.join(' , ')}</p>
+                <Button className="float-right" size="sm" variant="primary" href={props.link} target={"_blank"}>View</Button>
+                <Button className="float-right mr-1" size="sm" variant="primary" onClick={() => !saved && handleSave(
                     {
                         title: props.title,
-                        author: props.authors,
+                        authors: props.authors,
                         description: props.description,
                         image: props.thumbnail,
-                        link: props.selfLink
+                        link: props.link
                     })}>{!saved ? "Save" : "Already Saved"}</Button>
             </Card.Header>
-            <Card.Body>
-                <img src={props.thumbnail} alt={props.title} />
+            <Card.Body className="d-flex">
+                <img style={{ height: "100%", float: "left", marginRight: "10px" }} src={props.thumbnail} alt={props.title} />
                 <p> {props.description} </p>
             </Card.Body>
         </Card>
