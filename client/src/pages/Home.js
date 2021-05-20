@@ -6,7 +6,7 @@ function Home() {
         <Container className="d-flex align-items-center justify-content-center" style={{
             width: '100vw',
             height: '100vh',
-            backgroundImage: `url(./background.jpg)`,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/background.jpg)`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover"
