@@ -1,5 +1,4 @@
 import axios from 'axios';
-console.log(process.env.REACT_APP_APIKEY)
 
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 const REACT_APP_APIKEY = process.env.REACT_APP_APIKEY;
